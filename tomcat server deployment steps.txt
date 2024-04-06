@@ -1,0 +1,30 @@
+tomcat server deployment steps
+sudo -i
+yum update -y
+hostname tomcat
+sudo su -
+cd /opt
+wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.20/bin/apache-tomcat-10.1.20.tar.gz
+ll
+tar -xvzf apache-tomcat-10.1.20.tar.gz
+sudo mv apache-tomcat-10.1.20 tomcat10
+cd tomcat10/
+ls -al
+cd bin/
+./startup.sh
+sudo amazon-linux-extras install epel
+sudo amazon-linux-extras install java-openjdk11
+./startup.sh
+sudo find / -name context.xml
+vi /opt/tomcat10/webapps/manager/META-INF/context.xml
+vi /opt/tomcat10/webapps/host-manager/META-INF/context.xml
+./startup.sh
+and check with ip address
+cd ..
+ll
+cd conf
+ll
+vi tomcat-users.xml
+uncomment users
+cd ..
+cd bin/

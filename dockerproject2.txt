@@ -1,0 +1,30 @@
+dockerproject2
+
+launch ec2 instance amazonlinux
+sudo -i
+yum update -y
+yum install docker -y
+docker images
+docker ps
+service docker start
+vi Dockerfile
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y apache2 && apt-get install -y apache2-utils && apt-get clean
+EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+docker build -t ubuntu:container1 .
+docker images
+docker run -itd --name c1 -p 70:80 imageid
+docker ps -a
+
+
+vi Dockerfile
+FROM ubuntu:14.04
+RUN apt-get update && apt-get install -y apache2 && apt-get install -y apache2-utils && apt-get clean
+RUN echo "Welcome to agasthyasolutions by creating by docker file" > /var/www/html/index.html
+EXPOSE 80
+CMD ["apache2ctl", "-D", "FOREGROUND"]
+docker build -t ubuntu:container1 .
+docker images
+docker run -itd --name c1 -p 70:80 imageid
+docker ps -a
