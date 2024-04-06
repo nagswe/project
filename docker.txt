@@ -1,0 +1,37 @@
+launch ubuntu instance
+sudo -i
+apt update -y
+apt install git -y
+apt install docker -y
+apt update -y
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable" -y
+apt update -y
+apt-cache policy docker-ce -y
+apt install docker-ce -y
+systemctl status docker
+sudo chmod 777 /var/run/docker.sock
+mkdir docker_project
+cd docker_project/
+git clone https://github.com/nagswe/spring-boot-docker-app.git
+ls
+cd spring-boot-docker-app/
+vi Dockerfile
+apt install maven -y
+mvn clean install -Dskiptests
+ls -lrta
+cd target/
+ls
+docker images
+docker build -t nagesh20 .
+docker ps -a
+docker run --name nagesh da3513ffb398
+docker run -it --name nagesh1 da3513ffb398
+docker run -itd --name nagesh2 da3513ffb398
+docker exec -it container name /bin/sh
+ls
+ls -lrta
+ps ef | grep -i spring-boot-docker-app.jar
+
+
